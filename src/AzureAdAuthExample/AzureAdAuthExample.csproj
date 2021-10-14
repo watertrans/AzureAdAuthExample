@@ -5,4 +5,9 @@
     <UserSecretsId>38cd633c-b928-403b-9eac-69c3b68e0d3a</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.18.0" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.18.0" />
+  </ItemGroup>
+
 </Project>

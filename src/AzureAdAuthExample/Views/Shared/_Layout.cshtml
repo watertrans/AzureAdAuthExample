@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="@Url.Action("SignOut", "Account", new { Area = "MicrosoftIdentity" })">SignOut</a>
+    }
+    else
+    {
+        <a href="@Url.Action("SignIn", "Account", new { Area = "MicrosoftIdentity" })">SignIn</a>
+    }
+    </header>
+    <main role="main">
+        @RenderBody()
+    </main>
+</body>
+</html>
