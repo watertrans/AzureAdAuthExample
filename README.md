@@ -42,19 +42,31 @@ az ad app permission admin-consent --id $APP_ID
 
 ```
 
-## Applying Differences
+## Apply Azure AD and App information
 
-Create ASP.NET Core web app.
 ```
-dotnet new web -o AzureAdAuthExample
-```
+# Get Azure AD tenant Id.
+az account show --query 'tenantId' -o tsv
 
-Apply the following differences.  
-https://github.com/watertrans/AzureAdAuthExample/compare/7eb799c..a453627
+# Get App clinetId
+echo $APP_ID
+
+```
 
 Apply Azure AD and App information to appsettings.json.
+
 ```
 "Domain": "example.com",
 "TenantId": "11111111-1111-1111-1111-111111111111",
 "ClientId": "22222222-2222-2222-2222-222222222222",
 ```
+
+## Comparison with the initial state
+
+Initial state.
+```
+dotnet new web -o AzureAdAuthExample
+```
+
+Comparison with the initial state.  
+https://github.com/watertrans/AzureAdAuthExample/compare/7eb799c..a453627
