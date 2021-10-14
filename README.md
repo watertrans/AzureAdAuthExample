@@ -19,7 +19,7 @@ REPLY_URLS=https://localhost/signin-oidc
 # [EDIT HERE] Specify the redirect URL after logout.
 LOGOUT_URL=https://localhost/signout-oidc
 
-# Get the 'User.Read' read scope.
+# Get the 'User.Read' scope.
 USER_READ_ID=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "oauth2Permissions[?value=='User.Read'].id" --output tsv)
 
 # Create an App.
@@ -28,7 +28,7 @@ APP_ID=$(az ad app create --display-name $DISPLAY_NAME --reply-urls $REPLY_URLS 
 # Apply URL after logout.
 az ad app update --id $APP_ID --set logoutUrl=$LOGOUT_URL
 
-# Apply 'User.Read' read scope.
+# Apply 'User.Read' scope.
 az ad app update --id $APP_ID --required-resource-accesses "[{
     \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",
     \"resourceAccess\": [{
@@ -52,3 +52,9 @@ dotnet new web -o AzureAdAuthExample
 Apply the following differences.  
 https://github.com/watertrans/AzureAdAuthExample/compare/7eb799c..a453627
 
+Apply Azure AD and App information to appsettings.json.
+```
+"Domain": "example.com",
+"TenantId": "11111111-1111-1111-1111-111111111111",
+"ClientId": "22222222-2222-2222-2222-222222222222",
+```
