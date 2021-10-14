@@ -48,9 +48,8 @@ az ad app permission admin-consent --id $APP_ID
 # Get Azure AD tenant Id.
 az account show --query 'tenantId' -o tsv
 
-# Get App clinetId
-echo $APP_ID
-
+# [EDIT HERE] Get App clinetId
+az ad app list --query "[?displayName=='azuread-auth-example'].{appId:appId}" -o tsv
 ```
 
 Apply Azure AD and App information to appsettings.json.
